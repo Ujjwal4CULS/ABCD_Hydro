@@ -5,22 +5,22 @@ using namespace Rcpp;
 #include <math.h>
 using namespace std;
 
+
 //' Calculates the potential evaporation using Hamon method . This method uses the input vector of  monthly date time series, temperature and longitude values.
 //'
 //'
 //' @param date  is a monthly time series Date
-//'  @param tavg  is a monthly mean time series of temperature
-//'  @param lat  is a vector of longitude
-//'  @return is monthly potential evaporation in mm/day
-//'  @export
-//'  @imports data.table
+//' @param tavg  is a monthly mean time series of temperature
+//' @param lat  is a vector of longitude
+//' @return pet_hamon function estimates the monthly potential evaporation in mm/day
+//' @export
 //' @examples
 //'  m<-c()
-//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
-//' m$Temp<-c(3.1, 3.5, 5.0, 6.7, 9.3, 12.1, 14.3, 14.1, 11.8, 8.9, 5.5, 3.8)
+//' m$date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
+//' m$tavg<-c(3.1, 3.5, 5.0, 6.7, 9.3, 12.1, 14.3, 14.1, 11.8, 8.9, 5.5, 3.8)
 //' m$lat<-rep(57.1526, 12)
-//'  dt<-as.data.table(m)
-//' dt[, PET_Hamon:= pet_hamon(Date, Temp, lat)]
+//'  dt<-data.table::as.data.table(m)
+//' dt[, PET_Hamon:= pet_hamon(date, tavg, lat)]
 //' dt
  // [[Rcpp::export]]
 NumericVector pet_hamon(Rcpp::StringVector date, NumericVector tavg,  NumericVector lat)

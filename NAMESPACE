@@ -1,3 +1,4 @@
-useDynLib(Hydro, .registration=TRUE)
+useDynLib(test, .registration=TRUE)
 importFrom(Rcpp, evalCpp)
+importFrom(data.table, as.data.table)
 exportPattern("^[[:alpha:]]+")

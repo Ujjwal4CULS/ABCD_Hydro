@@ -6,15 +6,14 @@ using namespace Rcpp;
 #include <math.h>
 using namespace std;
 //' estimate the day using monthly time series of date . 
-//'
-//'
 //' @param date  is a monthly time series Date
-//'  @export
-//'  @import data.table
+//' @return day_cp function the output is the day of date
+//' @export
+//' @import data.table
 //' @examples
 //'  m<-c()
 //' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
-//' dt<-as.data.table(m)
+//' dt<-data.table::as.data.table(m)
 //' dt[, day:= day_cp(Date)]
 //' dt
 // [[Rcpp::export]]
@@ -41,24 +40,21 @@ return dayInt;
 
 #include <Rcpp.h>
 using namespace Rcpp;
-
 #include <iostream>
 #include <string>
 #include <math.h>
 using namespace std;
-//' estimate the month using monthly time series of date . 
-//'
-//'
-//' @param date  is a monthly time series Date
-//'  @export
-//'  @import data.table
+//' estimate the month using date time series data .
+//' @param date is a monthly time series Date
+//' @return month_cp function the output of the month vector.
+//' @export
+//' @import data.table
 //' @examples
-//'  m<-c()
+//' m<-c()
 //' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
-//' dt<-as.data.table(m)
+//' dt<-data.table::as.data.table(m)
 //' dt[, month:= month_cp(Date)]
 //' dt
-
 // [[Rcpp::export]]
 NumericVector month_cp(Rcpp::StringVector date){
 int arrSize = date.size();
@@ -89,20 +85,19 @@ return monthInt;
 #include <iostream>
 #include <string>
 #include <math.h>
-	using namespace std;
-	//' Calculates the year using monthly time series of date . 
-	//'
-	//'
-	//' @param date  is a monthly time series Date
-	//'  @export
-	//'  @import data.table
-	//' @examples
-	//'  m<-c()
-	//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
-	//' dt<-as.data.table(m)
-	//' dt[, year:= year_cp(Date)]
-	//' dt
-	// [[Rcpp::export]]
+using namespace std;
+//' Calculates the year using monthly time series of date . 
+//' @return year_cp function the output of the year vector.
+//' @param date  is a monthly time series Date
+//' @export
+//' @import data.table
+//' @examples
+//' m<-c()
+//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
+//' dt<-data.table::as.data.table(m)
+//' dt[, year:= year_cp(Date)]
+//' dt
+// [[Rcpp::export]]
 NumericVector year_cp(Rcpp::StringVector date){
 int arrSize = date.size();
 NumericVector yearInt(arrSize);
@@ -130,21 +125,18 @@ using namespace Rcpp;
 #include <math.h>
 using namespace std;
 //' Calculates the julian day using monthly time series of date . 
-//'
-//'
+//' @return julianday_cp function the output of julian day vector.
 //' @param date  is a monthly time series Date
-//'  @export
-//'  @import data.table
+//' @export
+//' @import data.table
 //' @examples
-//'  m<-c()
+//' m<-c()
 //' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
-//' dt<-as.data.table(m)
+//' dt<-data.table::as.data.table(m)
 //' dt[, JD:= julianday_cp(Date)]
 //' dt
 // [[Rcpp::export]]
-
-	
-	NumericVector julianday_cp(Rcpp::StringVector date){
+NumericVector julianday_cp(Rcpp::StringVector date){
 int arrSize = date.size();
 NumericVector JulianDay(arrSize);
 
@@ -184,25 +176,25 @@ return JulianDay;
 	
 	
 #include <Rcpp.h>
-	using namespace Rcpp;
-	
+using namespace Rcpp;	
 #include <iostream>
 #include <string>
 #include <math.h>
-	using namespace std;
-	//' Calculates the Annual heat index using monthly time series of temperature . 
-	//'
-	//'
-	//' @param date  is a monthly time series Date
-	//'  @export
-	//'  @import data.table
-	//' @examples
-	//'  m<-c()
-	//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
-	//' dt<-as.data.table(m)
-	//' dt[, AHI:= AHI(Date)]
-	//' dt
-	// [[Rcpp::export]]
+using namespace std;
+//' Calculates the Annual heat index using monthly time series of temperature . 
+//' @return AHI function the output of annual heat index vector.
+//' @param date  is a monthly time series Date
+//' @param temperature  is a monthly mean time series temperature in degree centigrade
+//' @export
+//' @import data.table
+//' @examples
+//' m<-c()
+//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
+//' m$temp<-1:12
+//' dt<-data.table::as.data.table(m)
+//' dt[, AHI:= AHI(Date, temp)]
+//' dt
+// [[Rcpp::export]]
 	NumericVector AHI(Rcpp::StringVector date, NumericVector temperature){
 	  int oldma = date.size();
 	  NumericVector years(oldma);
@@ -239,26 +231,23 @@ return JulianDay;
 	
 	#include <Rcpp.h>
 using namespace Rcpp;
-
 #include <iostream>
 #include <string>
 #include <math.h>
 using namespace std;
 //' Calculates the potential evaporation using Thornwaite method . This method uses the input vector of  monthly date time series, temperature and longitude values.
-//'
-//'
 //' @param date  is a monthly time series Date
-//'  @param tavg  is a monthly mean time series of temperature
-//'  @param lat  is a vector of longitude
-//'  @return is monthly potential evaporation in mm/month
-//'  @export
-//'  @import data.table
+//' @param tavg  is a monthly mean time series of temperature
+//' @param lat  is a vector of longitude
+//' @return of pet_thorn_cpp function is monthly potential evaporation in mm/month
+//' @export
+//' @import data.table
 //' @examples
-//'  m<-c()
+//' m<-c()
 //' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
 //' m$Temp<-c(3.1, 3.5, 5.0, 6.7, 9.3, 12.1, 14.3, 14.1, 11.8, 8.9, 5.5, 3.8)
 //' m$lat<-rep(57.1526, 12)
-//'  dt<-as.data.table(m)
+//' dt<-data.table::as.data.table(m)
 //' dt[, PET_Hamon:= pet_thorn_cpp(Date, Temp, lat)]
 //' dt
 // [[Rcpp::export]]

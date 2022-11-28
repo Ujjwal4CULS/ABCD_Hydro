@@ -4,28 +4,45 @@ using namespace Rcpp;
 #include <string>
 #include <math.h>
 using namespace std;
-//' Calculates the monthly water balance using ABCD cold region model . 
-//'
-//'
-//' @param date  is a monthly time series Date
-//'  @export
-//'  @import data.table
+//' Calculates the monthly water balance using ABCD hydrological model.
+//' @param para_a describes the amount of runoff and recharge in case the soils are under-saturated. This is dimensionless. This parameter range between 0-1 
+//' @param para_b  his explains the saturation level of the soils. Unit of this variable is mm. This parameter values range between 260 - 1900(Vandewiele et al. 1992)
+//' @param para_c defines the ratio of groundwater recharge to surface runoff. This is dimensionless.This parameter values range lies between 0 - 1.
+//' @param para_d dominants the rate of groundwater discharge. This is dimensionless.This parameter range between 0 - 1
+//' @param S_ini is the surface runoff
+//' @param G_ini is the initial ground water storage
+//' @param p is the precipitation
+//' @param PE is the potential evaporation
+//' @return abcd_month_model_cpp function the output list of  a time-series of water balance components
+//' A list with the following elements:
+//' \itemize{
+//' \item SR: Numeric vector with the mo0nthly surface runoff unit mm/month
+//' \item GW: Numeric vector with the ground water storage with unit mm/month
+//' \item AW: Numeric vector with availbale water with unit mm/month
+//' \item EO: Numeric vector with the evapotranspiration opportunity mm/month
+//' \item SM: Numeric vector with the soil moisture unit mm/month
+//' \item AET: Numeric vector witht the actual evaporation unit mm/month
+//' }
+//' @export
+//' @import data.table
 //' @examples
 //' para_a=.5
 //' para_b=200
 //' para_c=1
 //' para_d=.5
+//' SWS_ini=20
 //' S_ini=10
 //' G_ini=100
+//' alpha=0.03
+//' beta=.143
+//' Gmax=5
 //'  m<-c()
-//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
 //' m$p= c(100:111)
 //' m$PE=c(50:61)
 //' m$temp=c(-5:6)
-//' dt<-as.data.table(m)
-//' dt[, ABCD_CR:= abcdseList(para_a, para_b, para_c, para_d, S_ini, G_ini, p, PE)]
-//' dt
-
+//' dt<-data.table::as.data.table(m)
+//' dt[, abcd_month_model_cpp(para_a, para_b, para_c, para_d, S_ini, G_ini, p, PE)
+//'  , by=.(p, PE)]
 // [[Rcpp::export]]
 List abcdseList(double para_a, double para_b, double para_c, double para_d,  NumericVector p, NumericVector PE, double S_ini, double G_ini) {
   // Calibration period length

@@ -4,13 +4,24 @@ using namespace Rcpp;
 #include <string>
 #include <math.h>
 using namespace std;
-
 //' Calculates the monthly water balance using ABCD cold region model . 
-//'
-//'
-//' @param date  is a monthly time series Date
-//'  @export
-//'  @import data.table
+//' This model work for cold region. 
+//' @param para_a describes the amount of runoff and recharge in case the soils are under-saturated. This is dimensionless. This parameter range between 0.8-1 
+//' @param para_b  his explains the saturation level of the soils. Unit of this variable is mm. This parameter values range between 20-160
+//' @param para_c defines the ratio of groundwater recharge to surface runoff. This is dimensionless.This parameter values range lies between 0.8-1.
+//' @param para_d dominants the rate of groundwater discharge. This is dimensionless.This parameter range between 0.001-0.01
+//' @param SWS_ini is the solid water storage in the snow cover at the beginning of month. Unit of this variable is mm.
+//' @param S_ini is the surface runoff
+//' @param G_ini is the initial ground water storage
+//' @param p is the precipitation
+//' @param PE is the potential evaporation
+//' @param temp is monthly temperature
+//' @param alpha controlled by negative temperature. This unit is degree Celsius
+//' @param beta is influence by negative temperature
+//' @param Gmax is the potential maximum ground water storage
+//' @return abcd_cr function the output list of  a time-series of water balance components
+//' @export
+//' @import data.table
 //' @examples
 //' para_a=.5
 //' para_b=200
@@ -23,34 +34,20 @@ using namespace std;
 //' beta=.143
 //' Gmax=5
 //'  m<-c()
-//' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
 //' m$p= c(100:111)
 //' m$PE=c(50:61)
 //' m$temp=c(-5:6)
-//' dt<-as.data.table(m)
-//' dt[, ABCD_CR:= abcd_cr(para_a, para_b, para_c, para_d, SWS_ini, S_ini, G_ini, p, PE, temp, alpha, beta, Gmax)]
-//' dt
+//' dt<-data.table::as.data.table(m)
+//' dt[, abcd_cr(para_a, para_b, para_c, para_d, SWS_ini, S_ini, G_ini, p, PE, temp, alpha, beta, Gmax)
+//'  , by=.(p, PE, temp)]
 // [[Rcpp::export]]
-List abcd_cr(double para_a, double para_b, double para_c, double para_d, double SWS_ini, double S_ini, double G_ini, NumericVector p, NumericVector PE, NumericVector temp,  double alpha, double beta, double Gmax ) {
-  // Calibration period length
+List abcd_cr(double para_a, double para_b, double para_c, double para_d, double SWS_ini, double S_ini, double G_ini, NumericVector p,
+             NumericVector PE, NumericVector temp,  double alpha, double beta, double Gmax ) {
+
   
-  List res(8);
+  List res(9);
   int arrSize = PE.size();
-  //   para_a = 0.98;
-  //	para_b = 150;
-  //para_c = 0.3;
-  //	para_d =  .01;
   
-  //int W[] = {};
-  //double W = p.size();   //available water
-  //double Y= p.size();  //evapotranspiration opportunity
-  // double S= p.size();  
-  //double E= p.size();  //actual evaporation
-  //double G= p.size();  //groundwater storage
-  
-  
-  //double tn= p.size();
-  //NumericVector Qest(tn); 
   
    double para_cra = temp.size();
   NumericVector para_cr(para_cra);
@@ -165,9 +162,7 @@ List abcd_cr(double para_a, double para_b, double para_c, double para_d, double 
   res[8]= Q;
   
  res = List::create(Named("SNRF")=SNRF, Named("SW")=SW, Named("W") = W , Named("yy") = yy, Named("AET") = E , Named("GWS") = GWS, Named("GWE_BS") =GWE_BS , Named("CGWS") = CGWS, Named("TR")=	Q);
-  // Coerce to a data.frame
-  //res.attr("class") = "data.frame";
-  //res.attr("row.names") = Rcpp::seq(1, res.size());
+  
   return res; 
   }
    

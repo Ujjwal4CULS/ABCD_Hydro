@@ -12,7 +12,7 @@ Rcpp::Rostream<false>& Rcpp::Rcerr = Rcpp::Rcpp_cerr_get();
 
 // abcd_cr
 List abcd_cr(double para_a, double para_b, double para_c, double para_d, double SWS_ini, double S_ini, double G_ini, NumericVector p, NumericVector PE, NumericVector temp, double alpha, double beta, double Gmax);
-RcppExport SEXP _Hydro_abcd_cr(SEXP para_aSEXP, SEXP para_bSEXP, SEXP para_cSEXP, SEXP para_dSEXP, SEXP SWS_iniSEXP, SEXP S_iniSEXP, SEXP G_iniSEXP, SEXP pSEXP, SEXP PESEXP, SEXP tempSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP GmaxSEXP) {
+RcppExport SEXP _test_abcd_cr(SEXP para_aSEXP, SEXP para_bSEXP, SEXP para_cSEXP, SEXP para_dSEXP, SEXP SWS_iniSEXP, SEXP S_iniSEXP, SEXP G_iniSEXP, SEXP pSEXP, SEXP PESEXP, SEXP tempSEXP, SEXP alphaSEXP, SEXP betaSEXP, SEXP GmaxSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -35,7 +35,7 @@ END_RCPP
 }
 // abcd_month_model_cpp
 List abcd_month_model_cpp(double para_a, double para_b, double para_c, double para_d, double S_ini, double G_ini, NumericVector p, NumericVector PE);
-RcppExport SEXP _Hydro_abcd_month_model_cpp(SEXP para_aSEXP, SEXP para_bSEXP, SEXP para_cSEXP, SEXP para_dSEXP, SEXP S_iniSEXP, SEXP G_iniSEXP, SEXP pSEXP, SEXP PESEXP) {
+RcppExport SEXP _test_abcd_month_model_cpp(SEXP para_aSEXP, SEXP para_bSEXP, SEXP para_cSEXP, SEXP para_dSEXP, SEXP S_iniSEXP, SEXP G_iniSEXP, SEXP pSEXP, SEXP PESEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -53,7 +53,7 @@ END_RCPP
 }
 // pet_oudin_cp
 NumericVector pet_oudin_cp(Rcpp::StringVector date, NumericVector tavg, NumericVector lat);
-RcppExport SEXP _Hydro_pet_oudin_cp(SEXP dateSEXP, SEXP tavgSEXP, SEXP latSEXP) {
+RcppExport SEXP _test_pet_oudin_cp(SEXP dateSEXP, SEXP tavgSEXP, SEXP latSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -66,7 +66,7 @@ END_RCPP
 }
 // abcdseList
 List abcdseList(double para_a, double para_b, double para_c, double para_d, NumericVector p, NumericVector PE, double S_ini, double G_ini);
-RcppExport SEXP _Hydro_abcdseList(SEXP para_aSEXP, SEXP para_bSEXP, SEXP para_cSEXP, SEXP para_dSEXP, SEXP pSEXP, SEXP PESEXP, SEXP S_iniSEXP, SEXP G_iniSEXP) {
+RcppExport SEXP _test_abcdseList(SEXP para_aSEXP, SEXP para_bSEXP, SEXP para_cSEXP, SEXP para_dSEXP, SEXP pSEXP, SEXP PESEXP, SEXP S_iniSEXP, SEXP G_iniSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -84,7 +84,7 @@ END_RCPP
 }
 // day_cp
 NumericVector day_cp(Rcpp::StringVector date);
-RcppExport SEXP _Hydro_day_cp(SEXP dateSEXP) {
+RcppExport SEXP _test_day_cp(SEXP dateSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -95,7 +95,7 @@ END_RCPP
 }
 // month_cp
 NumericVector month_cp(Rcpp::StringVector date);
-RcppExport SEXP _Hydro_month_cp(SEXP dateSEXP) {
+RcppExport SEXP _test_month_cp(SEXP dateSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -106,7 +106,7 @@ END_RCPP
 }
 // year_cp
 NumericVector year_cp(Rcpp::StringVector date);
-RcppExport SEXP _Hydro_year_cp(SEXP dateSEXP) {
+RcppExport SEXP _test_year_cp(SEXP dateSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -117,7 +117,7 @@ END_RCPP
 }
 // julianday_cp
 NumericVector julianday_cp(Rcpp::StringVector date);
-RcppExport SEXP _Hydro_julianday_cp(SEXP dateSEXP) {
+RcppExport SEXP _test_julianday_cp(SEXP dateSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -128,7 +128,7 @@ END_RCPP
 }
 // AHI
 NumericVector AHI(Rcpp::StringVector date, NumericVector temperature);
-RcppExport SEXP _Hydro_AHI(SEXP dateSEXP, SEXP temperatureSEXP) {
+RcppExport SEXP _test_AHI(SEXP dateSEXP, SEXP temperatureSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -140,7 +140,7 @@ END_RCPP
 }
 // pet_thorn_cpp
 NumericVector pet_thorn_cpp(Rcpp::StringVector date, NumericVector tavg, NumericVector lat);
-RcppExport SEXP _Hydro_pet_thorn_cpp(SEXP dateSEXP, SEXP tavgSEXP, SEXP latSEXP) {
+RcppExport SEXP _test_pet_thorn_cpp(SEXP dateSEXP, SEXP tavgSEXP, SEXP latSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -153,7 +153,7 @@ END_RCPP
 }
 // pet_hamon
 NumericVector pet_hamon(Rcpp::StringVector date, NumericVector tavg, NumericVector lat);
-RcppExport SEXP _Hydro_pet_hamon(SEXP dateSEXP, SEXP tavgSEXP, SEXP latSEXP) {
+RcppExport SEXP _test_pet_hamon(SEXP dateSEXP, SEXP tavgSEXP, SEXP latSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -166,7 +166,7 @@ END_RCPP
 }
 // rcpp_hello_world
 List rcpp_hello_world();
-RcppExport SEXP _Hydro_rcpp_hello_world() {
+RcppExport SEXP _test_rcpp_hello_world() {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -176,22 +176,22 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_Hydro_abcd_cr", (DL_FUNC) &_Hydro_abcd_cr, 13},
-    {"_Hydro_abcd_month_model_cpp", (DL_FUNC) &_Hydro_abcd_month_model_cpp, 8},
-    {"_Hydro_pet_oudin_cp", (DL_FUNC) &_Hydro_pet_oudin_cp, 3},
-    {"_Hydro_abcdseList", (DL_FUNC) &_Hydro_abcdseList, 8},
-    {"_Hydro_day_cp", (DL_FUNC) &_Hydro_day_cp, 1},
-    {"_Hydro_month_cp", (DL_FUNC) &_Hydro_month_cp, 1},
-    {"_Hydro_year_cp", (DL_FUNC) &_Hydro_year_cp, 1},
-    {"_Hydro_julianday_cp", (DL_FUNC) &_Hydro_julianday_cp, 1},
-    {"_Hydro_AHI", (DL_FUNC) &_Hydro_AHI, 2},
-    {"_Hydro_pet_thorn_cpp", (DL_FUNC) &_Hydro_pet_thorn_cpp, 3},
-    {"_Hydro_pet_hamon", (DL_FUNC) &_Hydro_pet_hamon, 3},
-    {"_Hydro_rcpp_hello_world", (DL_FUNC) &_Hydro_rcpp_hello_world, 0},
+    {"_test_abcd_cr", (DL_FUNC) &_test_abcd_cr, 13},
+    {"_test_abcd_month_model_cpp", (DL_FUNC) &_test_abcd_month_model_cpp, 8},
+    {"_test_pet_oudin_cp", (DL_FUNC) &_test_pet_oudin_cp, 3},
+    {"_test_abcdseList", (DL_FUNC) &_test_abcdseList, 8},
+    {"_test_day_cp", (DL_FUNC) &_test_day_cp, 1},
+    {"_test_month_cp", (DL_FUNC) &_test_month_cp, 1},
+    {"_test_year_cp", (DL_FUNC) &_test_year_cp, 1},
+    {"_test_julianday_cp", (DL_FUNC) &_test_julianday_cp, 1},
+    {"_test_AHI", (DL_FUNC) &_test_AHI, 2},
+    {"_test_pet_thorn_cpp", (DL_FUNC) &_test_pet_thorn_cpp, 3},
+    {"_test_pet_hamon", (DL_FUNC) &_test_pet_hamon, 3},
+    {"_test_rcpp_hello_world", (DL_FUNC) &_test_rcpp_hello_world, 0},
     {NULL, NULL, 0}
 };
 
-RcppExport void R_init_Hydro(DllInfo *dll) {
+RcppExport void R_init_test(DllInfo *dll) {
     R_registerRoutines(dll, NULL, CallEntries, NULL, NULL);
     R_useDynamicSymbols(dll, FALSE);
 }

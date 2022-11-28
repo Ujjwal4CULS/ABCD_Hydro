@@ -1,25 +1,22 @@
 #include <Rcpp.h>
 using namespace Rcpp;
-
 #include <iostream>
 #include <string>
 #include <math.h>
 using namespace std;
-//' Calculates the potential evaporation using Oudin method . This method uses the input vector of  monthly date time series, temperature and longitude values.
-//'
-//'
+//' Calculates the potential evaporation using Oudin method . This method uses the input vector of monthly date time series, temperature and longitude values.
 //' @param date  is a monthly time series Date
-//'  @param tavg  is a monthly mean time series of temperature
-//'  @param lat  is a vector of longitude
-//'  @return is monthly potential evaporation in mm/day
-//'  @export
-//'  @import data.table
+//' @param tavg  is a monthly mean time series of temperature
+//' @param lat  is a vector of longitude
+//' @return pet_oudin_cp is monthly potential evaporation with unit mm/day
+//' @export
+//' @import data.table
 //' @examples
-//'  m<-c()
+//' m<-c()
 //' m$Date<-seq(as.Date("2014/1/1"), by="month" ,length.out =12)
 //' m$Temp<-c(3.1, 3.5, 5.0, 6.7, 9.3, 12.1, 14.3, 14.1, 11.8, 8.9, 5.5, 3.8)
 //' m$lat<-rep(57.1526, 12)
-//'  dt<-as.data.table(m)
+//' dt<-data.table::as.data.table(m)
 //' dt[, PET_Hamon:= pet_oudin_cp(Date, Temp, lat)]
 //' dt
 // [[Rcpp::export]]
